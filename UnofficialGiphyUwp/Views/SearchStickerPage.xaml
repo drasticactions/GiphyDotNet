@@ -1,0 +1,143 @@
+﻿<Page
+    x:Class="UnofficialGiphyUwp.Views.SearchStickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnofficialGiphyUwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:UnofficialGiphyUwp.ViewModels"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Template10.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:listControls="using:UnofficialGiphyUwp.Controls.ListControls"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:SearchStickerPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--  page header  -->
+        <controls:PageHeader Content="Sticker Search" BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" Frame="{x:Bind Frame}">
+            <interactivity:Interaction.Behaviors>
+                <behaviors:EllipsisBehavior Visibility="Collapsed" />
+            </interactivity:Interaction.Behaviors>
+        </controls:PageHeader>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" Orientation="Horizontal"
+                    Padding="12,8,0,0">
+
+                <controls:Resizer>
+                    <TextBox Width="200" MinWidth="200" MinHeight="60" MaxHeight="60"
+                         Margin="0" Header="Sticker Search Query"
+                         Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         TextWrapping="Wrap">
+                        <interactivity:Interaction.Behaviors>
+                            <behaviors:TextBoxEnterKeyBehavior>
+                                <core:CallMethodAction MethodName="SearchQuery" TargetObject="{Binding}" />
+                            </behaviors:TextBoxEnterKeyBehavior>
+                            <core:EventTriggerBehavior>
+                                <behaviors:FocusAction />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </TextBox>
+                </controls:Resizer>
+
+                <Button Margin="12,0" VerticalAlignment="Bottom"
+                    Click="{x:Bind ViewModel.SearchQuery}" Content="GifSearch" />
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="5" Orientation="Horizontal">
+                <Button Margin="5" Click="{x:Bind ViewModel.TranslateTest}" Content="Translate Test"/>
+                <Button Margin="5" Click="{x:Bind ViewModel.RandomTest}" Content="Random Test"/>
+                <Button Margin="5" Click="{x:Bind ViewModel.TrendingTest}" Content="Trending Test"/>
+            </StackPanel>
+            <listControls:AdaptiveGridView Grid.Row="2" IsSwipeEnabled="False" IsItemClickEnabled="True"
+                                  MinItemWidth="260"
+                                  MinItemHeight="146"
+                                  MaxItemHeight="292"
+                                                   HorizontalAlignment="Stretch" SelectionMode="None"
+                                          ItemsSource="{Binding SearchScrollingCollection}">
+                <listControls:AdaptiveGridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                        <Setter Property="HorizontalAlignment"
+                            Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                        <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                        <Setter Property="Margin"
+                            Value="5" />
+                    </Style>
+                </listControls:AdaptiveGridView.ItemContainerStyle>
+                <listControls:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5" BorderBrush="White"
+                                                    BorderThickness="1">
+                            <Grid>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.65" />
+                                </Grid.Background>
+                                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                            Grid.Column="0">
+                                    <Image Stretch="Fill" Source="{Binding Images.OriginalStill.Url}" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </listControls:AdaptiveGridView.ItemTemplate>
+            </listControls:AdaptiveGridView>
+        </Grid>
+
+    </Grid>
+</Page>
+
+
+
+
+
+
+
