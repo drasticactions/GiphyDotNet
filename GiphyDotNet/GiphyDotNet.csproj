@@ -1,7 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>GiphyDotNet</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Drastic Actions</Authors>
+    <Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright></Copyright>
+    <PackageTags>giphy gif images search</PackageTags>
+    <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/drasticactions/GiphyDotNet</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
