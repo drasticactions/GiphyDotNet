@@ -1,96 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{886A37DA-51DB-42ED-8482-2CF828E4E861}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GiphyDotNet</RootNamespace>
-    <AssemblyName>GiphyDotNet</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>GiphyDotNet</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Drastic Actions</Authors>
+    <Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright></Copyright>
+    <PackageTags>giphy gif images search</PackageTags>
+    <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/drasticactions/GiphyDotNet</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Interfaces\IWebManager.cs" />
-    <Compile Include="Manager\Giphy.cs" />
-    <Compile Include="Manager\WebManager.cs" />
-    <Compile Include="Model\GiphyImage\Data.cs" />
-    <Compile Include="Model\GiphyImage\Downsized.cs" />
-    <Compile Include="Model\GiphyImage\DownsizedLarge.cs" />
-    <Compile Include="Model\GiphyImage\DownsizedStill.cs" />
-    <Compile Include="Model\GiphyImage\FixedHeight.cs" />
-    <Compile Include="Model\GiphyImage\FixedHeightDownsampled.cs" />
-    <Compile Include="Model\GiphyImage\FixedHeightSmall.cs" />
-    <Compile Include="Model\GiphyImage\FixedHeightSmallStill.cs" />
-    <Compile Include="Model\GiphyImage\FixedHeightStill.cs" />
-    <Compile Include="Model\GiphyImage\FixedWidth.cs" />
-    <Compile Include="Model\GiphyImage\FixedWidthDownsampled.cs" />
-    <Compile Include="Model\GiphyImage\FixedWidthSmall.cs" />
-    <Compile Include="Model\GiphyImage\FixedWidthSmallStill.cs" />
-    <Compile Include="Model\GiphyImage\FixedWidthStill.cs" />
-    <Compile Include="Model\GiphyImage\Images.cs" />
-    <Compile Include="Model\GiphyImage\Meta.cs" />
-    <Compile Include="Model\GiphyImage\Original.cs" />
-    <Compile Include="Model\GiphyImage\OriginalStill.cs" />
-    <Compile Include="Model\GiphyImage\Pagination.cs" />
-    <Compile Include="Model\GiphyRandomImage\Data.cs" />
-    <Compile Include="Model\Parameters\RandomParameter.cs" />
-    <Compile Include="Model\Parameters\Rating.cs" />
-    <Compile Include="Model\Parameters\SearchParameter.cs" />
-    <Compile Include="Model\Parameters\TranslateParameter.cs" />
-    <Compile Include="Model\Parameters\TrendingParameter.cs" />
-    <Compile Include="Model\Results\GiphyIdResult.cs" />
-    <Compile Include="Model\Results\GiphyIdsResult.cs" />
-    <Compile Include="Model\Results\GiphyRandomResult.cs" />
-    <Compile Include="Model\Results\GiphySearchResult.cs" />
-    <Compile Include="Model\Web\Result.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\UriExtensions.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Collections.Specialized">
-      <HintPath>..\..\..\..\.nuget\packages\System.Collections.Specialized\4.0.0\ref\dotnet\System.Collections.Specialized.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
