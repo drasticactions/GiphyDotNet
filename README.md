@@ -2,11 +2,11 @@
 
 GiphyDotNet is a simple .NET wrapper library for the [Giphy](http://giphy.com) API. Giphy is a search engine for gifs, enabling developers to find new and interesting ways to intergrate gifs from the Internet into their applications (and ways for people in Marketing to annoy people like me with endless amounts of Cat gifs in Slack). GiphyDotNet is a way to consume to Giphy API without having to handle the requests yourself.
 
-###Getting Started
+### Getting Started
 
 Simply go to [Nuget](https://www.nuget.org/packages/GiphyDotNet/) and download the library. You can also get it directly from the package manager.
 
-###Gif/Sticker Search
+### Gif/Sticker Search
 
 ```c#
 var giphy = new Giphy("apikey");
@@ -20,7 +20,7 @@ var gifResult = await giphy.GifSearch(searchParameter);
 var stickerResult = await giphy.StickerSearch(searchParameter);
 ```
 
-###Gif By ID/IDs
+### Gif By ID/IDs
 
 ```c#
 var giphy = new Giphy("apikey");
@@ -28,7 +28,7 @@ var gifResult = await giphy.GetGifById("feqkVgjJpYtjy");
 var gifsResult = await giphy.GetGifsByIds(new string[] { "feqkVgjJpYtjy", "7rzbxdu0ZEXLy" });
 ```
 
-###Random Gif/Sticker
+### Random Gif/Sticker
 
 ```c#
 var giphy = new Giphy("apikey");
@@ -42,7 +42,7 @@ var stickerresult = await giphy.RandomSticker(new RandomParameter()
 });
 ```
 
-###Translate Into Gif/Sticker
+### Translate Into Gif/Sticker
 
 ```c#
 var giphy = new Giphy("apikey");
@@ -56,7 +56,7 @@ var stickerresult = await giphy.TranslateIntoSticker(new RandomParameter()
 });
 ```
 
-###Trending Gif/Stickers
+### Trending Gif/Stickers
 
 ```c#
 var giphy = new Giphy("apikey");
@@ -64,6 +64,6 @@ var gifResult = await giphy.TrendingGifs(new TrendingParameter());
 var stickerresult = await giphy.TrendingStickers(new TrendingParameter());
 ```
 
-###License
+### License
 
 This library is licensed under the MIT License.
