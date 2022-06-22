@@ -75,5 +75,15 @@ namespace GiphyDotNet.Test
             });
             Assert.True(gifResult != null);
         }
+
+        [Fact]
+        public async void BadRandomStickerSearch()
+        {
+            var gifResult = await giphy.RandomSticker(new RandomParameter()
+            {
+                Tag = "dfafnoewiqnfopafkmasdf"
+            });
+            Assert.True(gifResult != null);
+        }
     }
 }

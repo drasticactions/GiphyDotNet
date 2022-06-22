@@ -223,7 +223,17 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+            try
+            {
+                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+            }
+            catch (Exception)
+            {
+                // See https://github.com/drasticactions/GiphyDotNet/issues/7
+                // TL;DR Giphy returns an array if it's empty or a single object if found.
+                // This is a cheap hack to get around it.
+                return new GiphyRandomResult();
+            }
         }
 
         public async Task<GiphyRandomResult?> RandomSticker(RandomParameter randomParameter)
@@ -246,13 +256,23 @@ namespace GiphyDotNet.Manager
             }
 
             var result =
-                await _webManager.GetData(new Uri($"{BaseUrl}{BaseSticker}/random{UriExtensions.ToQueryString(nvc)}"));
+                await this._webManager.GetData(new Uri($"{BaseUrl}{BaseSticker}/random{UriExtensions.ToQueryString(nvc)}"));
             if (!result.IsSuccess)
             {
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+            try
+            {
+                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+            }
+            catch (Exception)
+            {
+                // See https://github.com/drasticactions/GiphyDotNet/issues/7
+                // TL;DR Giphy returns an array if it's empty or a single object if found.
+                // This is a cheap hack to get around it.
+                return new GiphyRandomResult();
+            }
         }
 
         public async Task<GiphySearchResult?> TrendingGifs(TrendingParameter trendingParameter)
