@@ -9,9 +9,12 @@
 		<Copyright>MIT</Copyright>
 		<PackageTags>giphy gif images search</PackageTags>
 		<PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
-		<PackageReleaseNotes>- Now .NET Standard 2.0 compatible!</PackageReleaseNotes>
+		<PackageReleaseNotes>
+			- Using System.Text.Json instead of JSON.NET.
+			- Fixed Random API endpoints. They should now return data correctly.
+		</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-		<Version>2.0</Version>
+		<Version>2.1</Version>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
 	</PropertyGroup>
 
