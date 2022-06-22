@@ -9,6 +9,8 @@
 		<Copyright>MIT</Copyright>
 		<PackageTags>giphy gif images search</PackageTags>
 		<PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/drasticactions/GiphyDotNet</RepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
 		<PackageReleaseNotes>
 			- Using System.Text.Json instead of JSON.NET.
 			- Fixed Random API endpoints. They should now return data correctly.
@@ -16,6 +18,7 @@
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 		<Version>2.1</Version>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
+		<Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
