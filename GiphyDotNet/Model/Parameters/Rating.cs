@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Rating.cs" company="Drastic Actions">
+// Copyright (c) Drastic Actions. All rights reserved.
+// </copyright>
 
 namespace GiphyDotNet.Model.Parameters
 {
@@ -23,7 +21,7 @@ namespace GiphyDotNet.Model.Parameters
             switch (me)
             {
                 case Rating.None:
-                    return "";
+                    return string.Empty;
                 case Rating.Y:
                     return "y";
                 case Rating.G:
@@ -35,7 +33,7 @@ namespace GiphyDotNet.Model.Parameters
                 case Rating.R:
                     return "r";
                 default:
-                    return "";
+                    return string.Empty;
             }
         }
     }

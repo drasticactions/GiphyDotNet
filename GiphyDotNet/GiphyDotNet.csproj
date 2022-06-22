@@ -1,34 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Authors>Drastic Actions</Authors>
-    <Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
-    <Copyright>MIT</Copyright>
-    <PackageTags>giphy gif images search</PackageTags>
-    <PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
-    <PackageReleaseNotes>- Now .NET Standard 2.0 compatible!</PackageReleaseNotes>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Version>2.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Authors>Drastic Actions</Authors>
+		<Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
+		<Copyright>MIT</Copyright>
+		<PackageTags>giphy gif images search</PackageTags>
+		<PackageProjectUrl>https://github.com/drasticactions/GiphyDotNet</PackageProjectUrl>
+		<PackageReleaseNotes>- Now .NET Standard 2.0 compatible!</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<Version>2.0</Version>
+		<WarningsAsErrors>nullable</WarningsAsErrors>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Properties\**" />
+		<EmbeddedResource Remove="Properties\**" />
+		<None Remove="Properties\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="6.0.5" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" Version="6.0.5" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
 </Project>

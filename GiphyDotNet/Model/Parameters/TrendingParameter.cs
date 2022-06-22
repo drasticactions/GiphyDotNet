@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="TrendingParameter.cs" company="Drastic Actions">
+// Copyright (c) Drastic Actions. All rights reserved.
+// </copyright>
 
 namespace GiphyDotNet.Model.Parameters
 {
@@ -21,6 +19,6 @@ namespace GiphyDotNet.Model.Parameters
         /// <summary>
         /// (optional) return results in html or json format (useful for viewing responses as GIFs to debug/test)
         /// </summary>
-        public string Format { get; set; }
+        public string? Format { get; set; }
     }
 }
