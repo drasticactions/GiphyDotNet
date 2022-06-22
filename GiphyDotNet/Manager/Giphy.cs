@@ -9,7 +9,8 @@ using GiphyDotNet.Interfaces;
 using GiphyDotNet.Model.Parameters;
 using GiphyDotNet.Model.Results;
 using GiphyDotNet.Tools;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace GiphyDotNet.Manager
 {
@@ -60,7 +61,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
         }
 
         public async Task<GiphyIdResult> GetGifById(string id)
@@ -106,7 +107,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
         }
 
         public async Task<GiphyIdsResult> GetGifsByIds(string[] ids)
@@ -122,7 +123,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyIdsResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdsResult>(result.ResultJson);
         }
 
         public async Task<GiphyIdResult> TranslateIntoGif(TranslateParameter translateParameter)
@@ -146,7 +147,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
         }
 
         public async Task<GiphyIdResult> TranslateIntoSticker(TranslateParameter translateParameter)
@@ -170,7 +171,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
         }
 
         public async Task<GiphyRandomResult> RandomGif(RandomParameter randomParameter)
@@ -190,7 +191,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyRandomResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
         }
 
         public async Task<GiphyRandomResult> RandomSticker(RandomParameter randomParameter)
@@ -210,7 +211,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphyRandomResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
         }
 
         public async Task<GiphySearchResult> TrendingGifs(TrendingParameter trendingParameter)
@@ -229,7 +230,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
         }
 
         public async Task<GiphySearchResult> TrendingStickers(TrendingParameter trendingParameter)
@@ -248,7 +249,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonConvert.DeserializeObject<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
         }
     }
 }

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GiphyDotNet.Model.GiphyImage;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace GiphyDotNet.Model.Results
 {
     public class GiphyIdResult
     {
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public Data Data { get; set; }
 
-        [JsonProperty("meta")]
+        [JsonPropertyName("meta")]
         public Meta Meta { get; set; }
     }
 }

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using GiphyDotNet.Model.GiphyImage;
-using Newtonsoft.Json;
 
 namespace GiphyDotNet.Model.Results
 {
     public class GiphyRandomResult
     {
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public GiphyRandomImage.Data Data { get; set; }
 
-        [JsonProperty("meta")]
+        [JsonPropertyName("meta")]
         public Meta Meta { get; set; }
     }
 }
