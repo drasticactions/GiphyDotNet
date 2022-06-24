@@ -12,12 +12,15 @@
 		<RepositoryUrl>https://github.com/drasticactions/GiphyDotNet</RepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<PackageReleaseNotes>
+			- Add Language query to Search
+			- Remove redundant Data object for Random API.
+			- Add more objects to search results, including User.
 			- "Fix" Random API throwing if no results found. 
 			- Using System.Text.Json instead of JSON.NET.
 			- Fixed Random API endpoints. They should now return data correctly.
 		</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-		<Version>2.2</Version>
+		<Version>2.3</Version>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
 		<Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
 	</PropertyGroup>
