@@ -12,6 +12,7 @@
 		<RepositoryUrl>https://github.com/drasticactions/GiphyDotNet</RepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<PackageReleaseNotes>
+			- Set API url to https.
 			- Add Language query to Search
 			- Remove redundant Data object for Random API.
 			- Add more objects to search results, including User.
@@ -20,7 +21,7 @@
 			- Fixed Random API endpoints. They should now return data correctly.
 		</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-		<Version>2.3</Version>
+		<Version>2.4</Version>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
 		<Description>A .NET wrapper for the Giphy (http://giphy.com) API.</Description>
 	</PropertyGroup>
