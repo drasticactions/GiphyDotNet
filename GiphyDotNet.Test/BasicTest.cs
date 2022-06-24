@@ -30,6 +30,23 @@ namespace GiphyDotNet.Test
             var gifResult = await giphy.GifSearch(searchParameter);
             Assert.True(gifResult != null);
             Assert.True(gifResult.Data.Any());
+            Assert.False(gifResult.Data.First().IsSticker);
+        }
+
+        [Fact]
+        public async void GifSearchLanguage()
+        {
+            var searchParameter = new SearchParameter()
+            {
+                Query = "awesome",
+                Language = "ja",
+            };
+
+            // Returns gif results
+            var gifResult = await giphy.GifSearch(searchParameter);
+            Assert.True(gifResult != null);
+            Assert.True(gifResult.Data.Any());
+            Assert.False(gifResult.Data.First().IsSticker);
         }
 
         [Fact]
@@ -44,6 +61,7 @@ namespace GiphyDotNet.Test
             var gifResult = await giphy.StickerSearch(searchParameter);
             Assert.True(gifResult != null);
             Assert.True(gifResult.Data.Any());
+            Assert.True(gifResult.Data.First().IsSticker);
         }
 
         [Fact]

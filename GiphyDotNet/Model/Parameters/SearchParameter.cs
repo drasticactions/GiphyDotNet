@@ -33,5 +33,13 @@ namespace GiphyDotNet.Model.Parameters
         /// Gets or sets the format: (optional) return results in html or json format (useful for viewing responses as GIFs to debug/test).
         /// </summary>
         public string? Format { get; set; }
+
+        /// <summary>
+        /// Gets or sets the language for the query.
+        /// Specify default language for regional content; use a 2-letter ISO 639-1 language code.
+        /// Defaults to en.
+        /// See https://developers.giphy.com/docs/optional-settings/#language-support for supported language codes.
+        /// </summary>
+        public string? Language { get; set; } = "en";
     }
 }

@@ -23,6 +23,7 @@ namespace GiphyDotNet.Manager
         private const string BaseUrl = "http://api.giphy.com/";
         private const string BaseGif = "v1/gifs";
         private const string BaseSticker = "v1/stickers";
+        private JsonSerializerOptions options;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Giphy"/> class.
@@ -31,6 +32,10 @@ namespace GiphyDotNet.Manager
         public Giphy(string authKey = "dc6zaTOxFJmzC")
         {
             this._authKey = authKey;
+            this.options = new JsonSerializerOptions
+            {
+                Converters = { new BoolConverter() },
+            };
         }
 
         /// <summary>
@@ -50,9 +55,15 @@ namespace GiphyDotNet.Manager
             nvc.Add("q", searchParameter.Query);
             nvc.Add("limit", searchParameter.Limit.ToString());
             nvc.Add("offset", searchParameter.Offset.ToString());
-            if(searchParameter.Rating != Rating.None)
+
+            if (searchParameter.Rating != Rating.None)
             {
                 nvc.Add("rating", searchParameter.Rating.ToFriendlyString());
+            }
+
+            if (!string.IsNullOrEmpty(searchParameter.Language))
+            {
+                nvc.Add("lang", searchParameter.Language);
             }
 
             if (!string.IsNullOrEmpty(searchParameter.Format))
@@ -67,7 +78,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson, this.options);
         }
 
         /// <summary>
@@ -92,6 +103,11 @@ namespace GiphyDotNet.Manager
                 nvc.Add("rating", searchParameter.Rating.ToFriendlyString());
             }
 
+            if (!string.IsNullOrEmpty(searchParameter.Language))
+            {
+                nvc.Add("lang", searchParameter.Language);
+            }
+
             if (!string.IsNullOrEmpty(searchParameter.Format))
             {
                 nvc.Add("fmt", searchParameter.Format);
@@ -104,7 +120,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphyIdResult?> GetGifById(string id)
@@ -118,7 +134,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphyIdsResult?> GetGifsByIds(string[] ids)
@@ -134,7 +150,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyIdsResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdsResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphyIdResult?> TranslateIntoGif(TranslateParameter translateParameter)
@@ -164,7 +180,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIFs: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphyIdResult?> TranslateIntoSticker(TranslateParameter translateParameter)
@@ -194,7 +210,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphyIdResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphyRandomResult?> RandomGif(RandomParameter randomParameter)
@@ -225,7 +241,7 @@ namespace GiphyDotNet.Manager
 
             try
             {
-                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson, this.options);
             }
             catch (Exception)
             {
@@ -264,7 +280,7 @@ namespace GiphyDotNet.Manager
 
             try
             {
-                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson);
+                return JsonSerializer.Deserialize<GiphyRandomResult>(result.ResultJson, this.options);
             }
             catch (Exception)
             {
@@ -297,7 +313,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get GIF: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson, this.options);
         }
 
         public async Task<GiphySearchResult?> TrendingStickers(TrendingParameter trendingParameter)
@@ -322,7 +338,7 @@ namespace GiphyDotNet.Manager
                 throw new WebException($"Failed to get Sticker: {result.ResultJson}");
             }
 
-            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson);
+            return JsonSerializer.Deserialize<GiphySearchResult>(result.ResultJson, this.options);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace GiphyDotNet.Model.Results
     public class GiphyRandomResult
     {
         [JsonPropertyName("data")]
-        public GiphyRandomImage.Data? Data { get; set; }
+        public Data? Data { get; set; }
 
         [JsonPropertyName("meta")]
         public Meta? Meta { get; set; }

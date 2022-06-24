@@ -12,6 +12,9 @@ namespace GiphyDotNet.Model.GiphyImage
         [JsonPropertyName("type")]
         public string? Type { get; set; }
 
+        [JsonPropertyName("is_sticker")]
+        public bool IsSticker { get; set; }
+
         [JsonPropertyName("id")]
         public string? Id { get; set; }
 
@@ -59,6 +62,12 @@ namespace GiphyDotNet.Model.GiphyImage
 
         [JsonPropertyName("images")]
         public Images? Images { get; set; }
+
+        [JsonPropertyName("user")]
+        public User? User { get; set; }
+
+        [JsonPropertyName("title")]
+        public string? Title { get; set; }
     }
 
 }
