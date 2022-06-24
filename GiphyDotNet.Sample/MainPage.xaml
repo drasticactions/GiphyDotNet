@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GiphyDotNet.Sample.MainPage">
+    <ScrollView>
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <VerticalStackLayout Spacing="15" Padding="5" Grid.Row="0">
+                <Label FontSize="Caption" Text="API Key" />
+                <Entry IsPassword="True" Text="{Binding ApiKey}" IsEnabled="{Binding DisableApiKeyCommand}" />
+                <Button Command="{Binding ApiKeyCommand}" CommandParameter="{Binding ApiKey}" Text="Connect"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="15" Padding="5" Grid.Row="1">
+                <Label FontSize="Caption" Text="Search Term" />
+                <Entry Placeholder="Enter Search Term..." Text="{Binding SearchParameter}" IsEnabled="{Binding EnableSearchStringCommand}" />
+                <Button Command="{Binding SearchGifCommand}" CommandParameter="{Binding SearchParameter}" Text="Search for GIFs"/>
+                <Button Command="{Binding SearchStickerCommand}" CommandParameter="{Binding SearchParameter}" Text="Search for Stickers"/>
+                <Button Command="{Binding RandomGifCommand}" CommandParameter="{Binding SearchParameter}" Text="Search for Random GIF"/>
+                <Button Command="{Binding RandomStickerCommand}" CommandParameter="{Binding SearchParameter}" Text="Search for Random Sticker"/>
+            </VerticalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Images}" Grid.Row="2">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Image  Source="{Binding Images.Original.Url}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -20,7 +20,7 @@ namespace GiphyDotNet.Manager
         private readonly IWebManager _webManager = new WebManager();
         private readonly string _authKey;
 
-        private const string BaseUrl = "http://api.giphy.com/";
+        private const string BaseUrl = "https://api.giphy.com/";
         private const string BaseGif = "v1/gifs";
         private const string BaseSticker = "v1/stickers";
         private JsonSerializerOptions options;
@@ -29,7 +29,7 @@ namespace GiphyDotNet.Manager
         /// Initializes a new instance of the <see cref="Giphy"/> class.
         /// </summary>
         /// <param name="authKey">Key used for authentication. By default set to the public beta key.</param>
-        public Giphy(string authKey = "dc6zaTOxFJmzC")
+        public Giphy(string authKey)
         {
             this._authKey = authKey;
             this.options = new JsonSerializerOptions
